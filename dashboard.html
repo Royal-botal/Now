@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Affilite</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <h1 class="logo-text">Affilite</h1>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+                    <span class="toggle-icon">◀</span>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#tasks" class="nav-item" data-page="tasks">
+                    <span class="nav-icon">✅</span>
+                    <span>Tasks</span>
+                </a>
+                <a href="#referrals" class="nav-item" data-page="referrals">
+                    <span class="nav-icon">👥</span>
+                    <span>Referrals</span>
+                </a>
+                <a href="#earnings" class="nav-item" data-page="earnings">
+                    <span class="nav-icon">💵</span>
+                    <span>Earnings</span>
+                </a>
+                <a href="#spin" class="nav-item" data-page="spin">
+                    <span class="nav-icon">🎰</span>
+                    <span>Daily Spin</span>
+                </a>
+                <a href="#profile" class="nav-item" data-page="profile">
+                    <span class="nav-icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle-mobile" id="sidebarToggleMobile" title="Toggle Sidebar">☰</button>
+                    <h2 id="pageTitle">Dashboard</h2>
+                    <p class="welcome-text">Welcome back, <span id="userName">User</span>!</p>
+                </div>
+                <div class="header-right">
+                    <div class="balance-card">
+                        <div class="balance-item">
+                            <span class="balance-label">Total Balance</span>
+                            <span class="balance-amount" id="totalBalance">$0.00</span>
+                        </div>
+                        <div class="balance-item">
+                            <span class="balance-label">Bonus Balance</span>
+                            <span class="balance-amount bonus" id="bonusBalance">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div class="page-content" id="dashboardPage">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3>Total Earnings</h3>
+                            <p class="stat-value" id="totalEarnings">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3>Tasks Completed</h3>
+                            <p class="stat-value" id="tasksCompleted">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>Referrals</h3>
+                            <p class="stat-value" id="totalReferrals">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <h3>Success Rate</h3>
+                            <p class="stat-value" id="successRate">0%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Status -->
+                <div class="account-status-card" id="accountStatusCard">
+                    <div class="status-content">
+                        <div class="status-icon">⚠️</div>
+                        <div class="status-text">
+                            <h3>Account Not Activated</h3>
+                            <p>Activate your account to start earning. Pay the activation fee using the PayBill number below.</p>
+                        </div>
+                    </div>
+                    <div class="activation-fee-display">
+                        <div class="fee-amount-card">
+                            <div class="fee-label">Activation Fee Required</div>
+                            <div class="fee-amount" id="activationFeeAmount">$25.00</div>
+                            <div class="fee-note">One-time payment to activate your account</div>
+                        </div>
+                    </div>
+                    <div class="paybill-section">
+                        <div class="paybill-info">
+                            <h4>PayBill Number</h4>
+                            <p class="paybill-number">529529</p>
+                            <p class="paybill-account">Account: <span id="userAccountNumber">ACC-123456</span></p>
+                            <p class="paybill-amount">Amount: <span class="amount-highlight" id="paybillAmount">$25.00</span></p>
+                        </div>
+                        <button class="btn btn-primary" id="activateBtn">Activate Account</button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">🎉</div>
+                            <div class="activity-content">
+                                <p><strong>Account Created</strong></p>
+                                <span class="activity-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Page -->
+            <div class="page-content hidden" id="tasksPage">
+                <div class="page-header">
+                    <h2>Available Tasks</h2>
+                    <p>Complete tasks to earn money</p>
+                </div>
+
+                <div class="tasks-grid" id="tasksGrid">
+                    <!-- Tasks will be dynamically loaded -->
+                </div>
+            </div>
+
+            <!-- Referrals Page -->
+            <div class="page-content hidden" id="referralsPage">
+                <div class="page-header">
+                    <h2>Referral Program</h2>
+                    <p>Earn money by referring friends</p>
+                </div>
+
+                <div class="referral-section">
+                    <div class="referral-card">
+                        <h3>Your Referral Code</h3>
+                        <div class="referral-code-box">
+                            <input type="text" id="referralCodeDisplay" readonly>
+                            <button class="btn-copy" id="copyReferralBtn">Copy</button>
+                        </div>
+                        <p class="referral-info">Share this code with friends. You earn $5 for each successful referral!</p>
+                    </div>
+
+                    <div class="referral-stats">
+                        <div class="referral-stat-item">
+                            <h4>Total Referrals</h4>
+                            <p class="stat-number" id="refCount">0</p>
+                        </div>
+                        <div class="referral-stat-item">
+                            <h4>Referral Earnings</h4>
+                            <p class="stat-number">$<span id="refEarnings">0.00</span></p>
+                        </div>
+                    </div>
+
+                    <div class="referrals-list">
+                        <h3>Your Referrals</h3>
+                        <div id="referralsList">
+                            <p class="empty-state">No referrals yet. Share your code to start earning!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings Page -->
+            <div class="page-content hidden" id="earningsPage">
+                <div class="page-header">
+                    <h2>Earnings History</h2>
+                    <p>Track all your earnings</p>
+                </div>
+
+                <div class="earnings-summary">
+                    <div class="earnings-card">
+                        <h4>Total Earnings</h4>
+                        <p class="earnings-amount" id="earningsTotal">$0.00</p>
+                    </div>
+                    <div class="earnings-card">
+                        <h4>Bonus Balance</h4>
+                        <p class="earnings-amount bonus" id="earningsBonus">$0.00</p>
+                    </div>
+                    <div class="earnings-card">
+                        <h4>Available for Withdrawal</h4>
+                        <p class="earnings-amount" id="earningsAvailable">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="transactions-section">
+                    <h3>Transaction History</h3>
+                    <div id="transactionsList">
+                        <p class="empty-state">No transactions yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spin Wheel Page -->
+            <div class="page-content hidden" id="spinPage">
+                <div class="page-header">
+                    <h2>Daily Spin</h2>
+                    <p>Spin the wheel and win rewards!</p>
+                </div>
+
+                <div class="spin-section">
+                    <div class="spin-container">
+                        <div class="spin-info-card">
+                            <h3>Spin to Win!</h3>
+                            <p class="spin-description">Spin the wheel to win cash rewards, bonuses, and more!</p>
+                            <div class="spin-status" id="spinStatus">
+                                <p id="spinStatusText">You have spins available!</p>
+                                <p class="spin-count" id="spinCountText">Daily spins remaining: <span id="dailySpinCount">0</span></p>
+                                <p class="spin-count" id="welcomeSpinCount" style="display: none;">Welcome spin available!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="wheel-container">
+                            <canvas id="spinWheel" width="400" height="400"></canvas>
+                            <div class="wheel-pointer"></div>
+                            <button class="btn-spin" id="spinButton" disabled>SPIN</button>
+                        </div>
+
+                        <div class="spin-prizes">
+                            <h4>Possible Prizes</h4>
+                            <div class="prizes-grid" id="prizesGrid">
+                                <!-- Prizes will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spin-history-section">
+                        <h3>Spin History</h3>
+                        <div id="spinHistoryList">
+                            <p class="empty-state">No spins yet. Spin the wheel to win rewards!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="page-content hidden" id="profilePage">
+                <div class="page-header">
+                    <h2>Profile Settings</h2>
+                    <p>Manage your account information</p>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-card">
+                        <h3>Personal Information</h3>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="profileName" placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="profileEmail" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="profilePhone" placeholder="Phone">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>Account Information</h3>
+                        <div class="account-info">
+                            <div class="info-item">
+                                <span class="info-label">Account Number:</span>
+                                <span class="info-value" id="accountNumberDisplay">ACC-123456</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Member Since:</span>
+                                <span class="info-value" id="memberSince">2024</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Account Status:</span>
+                                <span class="info-value status-badge" id="accountStatusDisplay">Inactive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Trivia Modal -->
+    <div class="modal" id="triviaModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeTrivia">&times;</span>
+            <h2>Trivia Question</h2>
+            <div id="triviaQuestion">
+                <!-- Question will be loaded here -->
+            </div>
+            <div id="triviaOptions" class="trivia-options">
+                <!-- Options will be loaded here -->
+            </div>
+            <button class="btn btn-primary" id="submitTrivia" disabled>Submit Answer</button>
+        </div>
+    </div>
+
+    <!-- Welcome Message Modal -->
+    <div class="modal welcome-modal" id="welcomeModal">
+        <div class="modal-content welcome-modal-content">
+            <div class="welcome-animation">
+                <div class="welcome-icon">🎉</div>
+                <h2 class="welcome-title">Welcome to Affilite!</h2>
+                <p class="welcome-message" id="welcomeMessageText">We're excited to have you here. Let's start earning together!</p>
+                <div class="welcome-features">
+                    <div class="welcome-feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Complete Tasks</span>
+                    </div>
+                    <div class="welcome-feature">
+                        <span class="feature-icon">👥</span>
+                        <span>Refer Friends</span>
+                    </div>
+                    <div class="welcome-feature">
+                        <span class="feature-icon">🎰</span>
+                        <span>Daily Spin</span>
+                    </div>
+                    <div class="welcome-feature">
+                        <span class="feature-icon">💰</span>
+                        <span>Earn Money</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary welcome-btn" id="welcomeCloseBtn">Let's Get Started!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

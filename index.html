@@ -3,83 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology Animation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Dancing Script', cursive;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            color: #fff;
-        }
-
-        .heart {
-            font-size: 5rem;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
-        .message {
-            font-size: 2rem;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 1s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .finale {
-            font-size: 1.5rem;
-            margin-top: 30px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 4s;
-        }
-
-        .emojis {
-            margin-top: 20px;
-            font-size: 2rem;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-            animation-delay: 6s;
-        }
-    </style>
+    <title>Affilite - Affiliate Marketing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="heart">❤️</div>
-        <div class="message">I'm sorry for last night sweetheart, my love. Please forgive me. 💔</div>
-        <style>
-            body {
-            background-image: url('v.jpg');
-            background-size: cover;
-            background-position: center;
-            }
-        </style>
-        <div class="finale">You mean the world to me. 🌎</div>
-        <div class="emojis">💐✨❤️🌸🌟</div>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="logo-section">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <h1>Affilite</h1>
+                </div>
+                <p class="tagline">Earn Money Through Tasks & Referrals</p>
+            </div>
+
+            <div class="auth-form">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Login to continue earning</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+                <div class="divider">
+                    <span>Don't have an account?</span>
+                </div>
+
+                <a href="signup.html" class="btn btn-secondary">Create Account</a>
+            </div>
+
+            <div class="auth-footer">
+                <p>&copy; 2024 Affilite. All rights reserved.</p>
+            </div>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
